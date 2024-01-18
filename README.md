@@ -1,6 +1,6 @@
 # Decoratir haqida
 
-### 1) Abstract Base class nima o'zi, shu haqida tushunchaga ega bo'lamiz,keyin code yozib yanada to'liqroq tushunib olamiz.
+### 1) Decoratir nima, aslida  nima uchun kerak va undan qanday foydalanamiz kabi yechimlarga javob shu yerda !
  [GitHubga Follow bo'ling ](https://github.com/fayzullohblog)  
 
 <p align="center">
