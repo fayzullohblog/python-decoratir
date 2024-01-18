@@ -4,7 +4,7 @@
  [GitHubga Follow bo'ling ](https://github.com/fayzullohblog)  
 
 <p align="center">
-<img alt="Types-of-OOPS-2" height="500" src="https://media.geeksforgeeks.org/wp-content/uploads/20230818181616/Types-of-OOPS-2.gif" width="500">
+<img alt="Types-of-OOPS-2" height="500" src="https://miro.medium.com/v2/resize:fit:1400/0*D8Nc0Dyu2iOUdNok" width="1000">
 </p>
 
 
@@ -16,6 +16,9 @@ siz uchun mavxum, ammo bu xizmatlar sizga kerak, xuddi shunday Abstact class va 
 va vorislik olgan class bu guyoki Mexmon xoandan online joy booking qilgan klintga uxshaydi, Subclass, Abstract classning barcha methodlarini o'zgartirib(override) qilib , o'zi uchun foydalanadi.
 endi code yozamiz
 
+<p align="center">
+<img alt="Types-of-OOPS-2" height="500" src="https://miro.medium.com/v2/resize:fit:1400/1*PCrgNdMFnOGF5FHhaLAwJg.png" width="1000">
+</p>
 
 
 ### 2) main.py faylga birinchi Abstract classdan foydalanmasdan oddiy vorsilkdan foydalanib ko'ramiz.
