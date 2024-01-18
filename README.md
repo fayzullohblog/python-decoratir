@@ -9,100 +9,80 @@
 
 
 > [!NOTE]
-Abstract classni tushunish uchun, sizga hayotiy mosil keltiraman. Abstract class degani mavxum class degani, ammo  bu class mavxum bo'lsada bizga foydalanayotgan  codning  interfice tomondan chiroyli ko'rsatish va tartibli holatda yozish uchundir. Diqqatli bo'ling ! siz
-Mexmon xonadan online xona booking qildingiz, sizga mexmona xona xodimlari tomonidan xonaning raqami, xonaga kirish uchun maxsus parol, internet uchun passwordni ham berdi, xullas kalom siz uchun maxsus kerak bo'lgan ma'lumotlarni berdi,
-endi shu xizmatni sizga kabi boshqa  klintlar uchun ham qiladi, albatda ularning talabidan kelib chiqib. Shu yerda mexmon xonaning ichki ish holati qanday bo'layotganligi, sizga xona uchun raqam, kirish paroli va boshqa xizmatlarni qanday qilayotganligi
-siz uchun mavxum, ammo bu xizmatlar sizga kerak, xuddi shunday Abstact class va method xosil qilishn uchun abc modulidan ABC va @abstractmethod-larni import qilib mavxum Abstract class xosil qilamiz, va bu  classdan boshqa bir subclasslar vorislik oladi,
-va vorislik olgan class bu guyoki Mexmon xoandan online joy booking qilgan klintga uxshaydi, Subclass, Abstract classning barcha methodlarini o'zgartirib(override) qilib , o'zi uchun foydalanadi.
-endi code yozamiz
+Decoartir nima? Python dasturlash tilidagi funksiyalar orqali  boshqa funksiyalarga o'zgartirishlar kiritish uchun foydalaniladigan maxsus sintaksisdir(belgi). Decorator, biror funksiyani o'z ichiga oladi va unga qo'shimcha funksiyalarni qo'shish, o'zgartirish yoki funksiya ishlashni boshlaganini  va tugaganini tekshirish imkoniyatini beradi.
 
 <p align="center">
 <img alt="Types-of-OOPS-2" height="500" src="https://miro.medium.com/v2/resize:fit:1400/1*PCrgNdMFnOGF5FHhaLAwJg.png" width="1000">
 </p>
 
+***Etibor bering yuqoridagi rasimda bir g'isht, qandaydir decoratir nomli mashina(zavut) ichida o'tib boshqacha ko'rinishga ega bo'lib qoldi, xuddi shunday g'ishtni funksiya deb rasimda ko'rsatgan va unga qo'shimcha o'zgartirish keritish uchun decoratirdan foydalangan, qolgan tushunchani code yozish orqali tushunib olamiz***
 
-### 2) main.py faylga birinchi Abstract classdan foydalanmasdan oddiy vorsilkdan foydalanib ko'ramiz.
+### 2) main.py faylga birinchi , oddiy funskiya yozaman berilgan qiymatni bir soniga oshirib qo'yadi.
 
 ```sh
-class Person():
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+def add_number(number):
+    return number+1
 
-    def display_info(self):
-        pass
-
-class User(Person):
-    def display_info(self):
-        print(f"User: {self.name}, Age: {self.age}")
-
-class Admin(Person):
-    def display_info(self):
-        print(f"Admin: {self.name}, Age: {self.age}")\
-
-person=Person('fayzulloh',23)
-user = User("John Doe", 25)
-admin = Admin("Admin Name", 30)
-
-
-person.display_info()
-user.display_info()
-admin.display_info()
+result=add_number(5)
+result
 ```
-***Etibor bering, Person classidan , Admin va User classlari vorslik oldi va Person classining display_info() methoodini override qildi, va har bir class uchun alohida object yaratdi,
-natija esa quyidagicha chiqadi.***
+
 
 #### Natija
 ```sh
-User: John Doe, Age: 25
-User: Admin Name, Age: 30
+6
 ```
 
+
+
+
+### 3) yuqoridagi add_number()  funskiyasini boshqa funskiya ichiga yozib qo'yaman , ammo doimdi ishdi qiladi, yani berilgan qiymatga 1 sonini qo'shib quyadi.
+
+
+```sh
+def make(number):
+    def add_number(number):
+        return number+1
+
+    add_one=add_number(number)
+    return add_one
+
+result=make(3)
+result
+
+```
+***add_number() funksiyasi qiymantini, boshqa make() nomli fnskiya orqali olayabdi va natija......**
+
+#### Natija
+```sh
+4
+```
+
+### 4) endi esa, bir funskiya parametriga boshqa funksiyani berib yuboramiz va qiladigan sihi esa, yuqoridagi 2 va 3 holatdagi bilan birxil bo'ladi.
+
+
+```sh
+def add_number(number):
+    return number+1
+
+def make(function):
+    number=2
+
+    return function(number)
+result=make(add_number)
+result
+
+```
+***Etibor bering ! bu decoratir mavzusini o'rganishlik uchun , oldin funksiyalar bilan ishlashni o'rganib chiqgan bo'lihs kerak bo'ladi***
+
+#### Natija
+```sh
+3
+```
 
 > [!NOTE]
-Abstract Classdan hechqachon object yaratib bo'lmaydi va Abstract classda mavjuda bo'lgan methodla, Abstract classdan voris olgan classlar, Abstract classning methodlarini o'zgartirib foydalanadi.
-> 
+4-holatda, make() funskiyasi o'zining parametri sifatida add_number() funskiyasini qabul qildi, shu add_number() funksiyasining parametrini berishlik uchun esa make() funskiyasi ichida berib return ga qaytarib yubordek va natija esa birxil, ishlash yullar harxil
 
-### 3) main.py faylga birinchi Abstract classdan foydalanib ko'ramiz. Buning uchun abc modulidan ABC class uchun , @abstractmethod decoratirini,  methodlar  uchun import qilib olamiz
-
-
-```sh
-from abc import ABC, abstractmethod
-
-class Person(ABC):
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
-
-    @abstractmethod
-    def display_info(self):
-        pass
-
-class User(Person):
-    def display_info(self):
-        print(f"User: {self.name}, Age: {self.age}")
-
-class Admin(Person):
-    def display_info(self):
-        print(f"User: {self.name}, Age: {self.age}")
-
-
-user = User("John Doe", 25)
-admin = Admin("Admin Name", 30)
-person=Person('Fayzulloh',23)
-
-user.display_info()
-admin.display_info()
-
-```
-***Etibor bering, Person classidan , Admin va User classlari vorslik oldi va Person classining display_info() methoodini override qildi, va faqat voris classlar  uchun alohida object yaratdildi,
-Abstract class uchun object yarata olmadek. va Natija quyidagicha***
-
-#### Natija
-```sh
-User: John Doe, Age: 25
-User: Admin Name, Age: 30
-```
 
 ***`@abstractmethod` - bu decoratirni Abstract classning harqanday methodida foydalanishlik shart bo'ladi, 
 sababi boshqa classlarda ya'ni subclasslarda aynan shu methodlar override qilinadi. Abstract classdagi methodalar nima uchun kerak, aynan subclasslarning interficelarini yaxshilash va codeni sodda ko'rinishga olib kelish uchun***
