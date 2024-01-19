@@ -134,6 +134,31 @@ Fayzulloh
 > [!NOTE]
 6-holatdagi tushuncha decoratir mavzusi uchun muhim tushuncha sanaladi, ya'ni yuqorida make() funskiyasining ichiga name() funksiyaini yozdek, ism parametri name() funskiyasida foydalanildi.
 
+## Yuqoridagi o'rganib chiqgan holatlarimizni yaxshi tushungan bo'lsangiz, endi Decoratir yaratishni boshlaymiz.
+
+### 8) Decoratir yaratish
+
+
+```sh
+def uppercase_decorator(function):
+    def wrapper():
+        func = function()
+        make_uppercase = func.upper()
+        return make_uppercase
+
+    return wrapper
+
+```
+
+
+#### Natija
+```sh
+Fayzulloh
+```
+
+> [!NOTE]
+6-holatdagi tushuncha decoratir mavzusi uchun muhim tushuncha sanaladi, ya'ni yuqorida make() funskiyasining ichiga name() funksiyaini yozdek, ism parametri name() funskiyasida foydalanildi.
+
 
 
 ***`@abstractmethod` - bu decoratirni Abstract classning harqanday methodida foydalanishlik shart bo'ladi, 
