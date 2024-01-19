@@ -7,6 +7,7 @@
 <img alt="Types-of-OOPS-2" height="500" src="https://miro.medium.com/v2/resize:fit:1400/0*D8Nc0Dyu2iOUdNok" width="1000">
 </p>
 
+***Etibor bering ! bu decoratir mavzusini o'rganishlik uchun , oldin funksiyalar bilan ishlashni o'rganib chiqgan bo'lish kerak bo'ladi, ammo shu decoratir mavzusida ham murakkab funskiyalar hosil qilishga bir nechta misol yozib ketamiz chunki bu holatlarni bilish decoratir mavzusi uchun muxim***
 
 > [!NOTE]
 Decoartir nima? Python dasturlash tilidagi funksiyalar orqali  boshqa funksiyalarga o'zgartirishlar kiritish uchun foydalaniladigan maxsus sintaksisdir(belgi). Decorator, biror funksiyani o'z ichiga oladi va unga qo'shimcha funksiyalarni qo'shish, o'zgartirish yoki funksiya ishlashni boshlaganini  va tugaganini tekshirish imkoniyatini beradi.
@@ -58,8 +59,7 @@ result
 4
 ```
 
-### 4) endi esa, bir funskiya parametriga boshqa funksiyani berib yuboramiz va qiladigan sihi esa, yuqoridagi 2 va 3 holatdagi bilan birxil bo'ladi.
-
+### 4) endi esa, bir funskiya parametriga boshqa funksiyani berib yuboramiz va codemizning qiladigan asosiy ishi yuqoridagi 2 va 3 - holatlar bilan bir hil bo'ladi,lekin yullar turlicha.
 
 ```sh
 def add_number(number):
@@ -73,7 +73,6 @@ result=make(add_number)
 result
 
 ```
-***Etibor bering ! bu decoratir mavzusini o'rganishlik uchun , oldin funksiyalar bilan ishlashni o'rganib chiqgan bo'lihs kerak bo'ladi***
 
 #### Natija
 ```sh
@@ -81,7 +80,60 @@ result
 ```
 
 > [!NOTE]
-4-holatda, make() funskiyasi o'zining parametri sifatida add_number() funskiyasini qabul qildi, shu add_number() funksiyasining parametrini berishlik uchun esa make() funskiyasi ichida berib return ga qaytarib yubordek va natija esa birxil, ishlash yullar harxil
+4-holatda, make() funskiyasi o'zining parametri sifatida add_number() funskiyasini qabul qildi, shu add_number() funksiyasining parametrini berishlik uchun esa make() funskiyasi ichida number=2 yozib, return ga qaytarib yubordek va natija esa birxil, ishlash yullar harxil.
+
+
+
+### 5) make() funksiyani chaqirganda name() funksiyani qaytarish.
+
+
+```sh
+
+def make():
+    def name():
+        return 'Fayzulloh'
+
+    return name
+result=make()
+result
+
+```
+
+
+#### Natija
+```sh
+Fayzulloh
+```
+
+> [!NOTE]
+funskiyaga qavis quyish quymaslik haqida.
+
+
+### 6) Ichki funskiya, o'zi joylashgan tashqi funskiyasining parametri va o'zgaruvchilaridan foydalanish huquqiga ega.
+
+
+```sh
+
+def make(ism):
+    def name():
+        print(" name bu ichki funksiya,make funskiyaga nisbatan ")
+        return ism
+
+    name()
+result=make("Fayzulloh")
+result
+
+```
+
+
+#### Natija
+```sh
+Fayzulloh
+```
+
+> [!NOTE]
+6-holatdagi tushuncha decoratir mavzusi uchun muhim tushuncha sanaladi, ya'ni yuqorida make() funskiyasining ichiga name() funksiyaini yozdek, ism parametri name() funskiyasida foydalanildi.
+
 
 
 ***`@abstractmethod` - bu decoratirni Abstract classning harqanday methodida foydalanishlik shart bo'ladi, 
